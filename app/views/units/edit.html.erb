@@ -1,0 +1,111 @@
+<!-- Validation failure messages -->
+
+<% if @unit.errors.any? %>
+  <% @unit.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Apartment Info</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_unit/<%= @unit.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for landlord_id -->
+          <div class="form-group">
+            <label for="landlord_id" class="col-sm-2 control-label">
+              Landlord
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="landlord_id" name="landlord_id" placeholder="Landlord" class="form-control" value="<%= @unit.landlord.email %>">
+            </div>
+          </div>
+
+          <!-- Label and input for building_name -->
+          <div class="form-group">
+            <label for="building_name" class="col-sm-2 control-label">
+              Building name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="building_name" name="building_name" placeholder="Building name" class="form-control" value="<%= @unit.building_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for building_address -->
+          <div class="form-group">
+            <label for="building_address" class="col-sm-2 control-label">
+              Building address
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="building_address" name="building_address" placeholder="Building address" class="form-control" value="<%= @unit.building_address %>">
+            </div>
+          </div>
+
+          <!-- Label and input for unit_number -->
+          <div class="form-group">
+            <label for="unit_number" class="col-sm-2 control-label">
+              Unit number
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="unit_number" name="unit_number" placeholder="Unit number" class="form-control" value="<%= @unit.unit_number %>">
+            </div>
+          </div>
+
+          <!-- Label and input for city -->
+          <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">
+              City
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @unit.city %>">
+            </div>
+          </div>
+
+          <!-- Label and input for state -->
+          <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">
+              State
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @unit.state %>">
+            </div>
+          </div>
+
+          <!-- Label and input for zip -->
+          <div class="form-group">
+            <label for="zip" class="col-sm-2 control-label">
+              Zip
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @unit.zip %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Unit
+              </button>
+              or
+              <a href="/units/<%= @unit.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
